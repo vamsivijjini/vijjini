@@ -1,0 +1,57 @@
+package TestOne;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/helloworld")
+public class Service {
+	@GET
+	@Path("/{messageId}")
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String getAllMessages(@PathParam("messageId") int messageId) {
+		System.out.println("Hi Service code" + messageId);
+		Message message = new Message();
+		List<Message> list = new ArrayList<Message>();
+		message.setId(1);
+		message.setName("vamsi");
+		message.setAge(25);
+		list.add(message);
+		Message message2 = new Message();
+		Message message3 = new Message();
+		Message message4 = new Message();
+
+		message2.setName("krishna");
+		message2.setAge(25);
+		message2.setId(2);
+		list.add(message2);
+
+		message3.setName("Aadvik");
+		message3.setAge(22);
+		message3.setId(3);
+		list.add(message3);
+
+		message4.setName("Ganesh");
+		message4.setAge(35);
+		message4.setId(4);
+		list.add(message4);
+
+		for (Message m : list) {
+			// System.out.println("Hai" + m);
+			if (m.getId() == messageId)
+				return m.toString();
+		}
+
+		return "Ends service";
+
+	}
+
+}
+
+

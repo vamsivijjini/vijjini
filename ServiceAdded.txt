@@ -1,0 +1,48 @@
+package TestOne;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/display")
+public class ServiceAdded {
+	@GET
+
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String getAllMessages() {
+		System.out.println("Hi Service code");
+		Message message = new Message();
+		List<Message> list = new ArrayList<Message>();
+		message.setId(1);
+		message.setName("vamsi");
+		message.setAge(25);
+		list.add(message);
+
+		Message message2 = new Message();
+		message2.setName("krishna");
+		message2.setAge(25);
+		message2.setId(2);
+		list.add(message2);
+
+		Message message3 = new Message();
+		message3.setName("Aadvik");
+		message3.setAge(22);
+		message3.setId(3);
+		list.add(message3);
+
+		Message message4 = new Message();
+		message4.setName("Ganesh");
+		message4.setAge(35);
+		message4.setId(4);
+		list.add(message4);
+
+		for (Message m1 : list)
+			System.out.println(m1);
+
+		return "Service Ends";
+	}
+}
